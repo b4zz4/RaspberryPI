@@ -1,7 +1,5 @@
 # Raspberry PI
 
-Bitácora de mis experimentos con 
-
 ## RaspBMC
 
 Lo descargue del [sitio oficial](http://www.raspberrypi.org/downloads). 
