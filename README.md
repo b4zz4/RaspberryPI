@@ -10,6 +10,8 @@ _**Nota:** Arora browser se instalo como parte de una actualización pero no fun
 
 ## GPIO
 
+![Puertos GPIO](GPIOs.png)
+
 compile la herramientas para manejar en [bash los puertos GPIO](http://elinux.org/Rpi_Low-level_peripherals#Bash_shell_script.2C_using_sysafs.2C_part_of_the_raspbian_operating_system).
 Como la experiencia fue muy simple solo tuve que usar ... pensé en ponerle una interfaz más amigable a algunos puestos del GPIO. 
 Copiándome de la experiencia del [Gamepad universal](http://wiki.hackcoop.com.ar/Gamepad_universal) use fichas banana y un envase de plástico duro hecho cortado a mano.
