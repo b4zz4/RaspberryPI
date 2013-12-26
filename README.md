@@ -23,6 +23,12 @@ Y los conectores de led de unas PCs viejas que sirvieron para conectar el GPIO a
 ![foto del modelo terminado](2013-12-26-015347.jpg)
 
 
+### Pendientes
+
+* Pull-up en los puertos
+* Probarlo bien
+* Ejemplos de programación
+
 ## Material de terceros
 
 * https://upload.wikimedia.org/wikipedia/commons/a/af/Raspberrypi_pcb_overview_v04.svg
