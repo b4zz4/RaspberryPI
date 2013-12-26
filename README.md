@@ -17,7 +17,7 @@ Como la experiencia fue muy simple solo tuve que usar ... pensé en ponerle una 
 Copiándome de la experiencia del [Gamepad universal](http://wiki.hackcoop.com.ar/Gamepad_universal) use fichas banana y un envase de plástico duro hecho cortado a mano.
 Y los conectores de led de unas PCs viejas que sirvieron para conectar el GPIO a las fichas banana.
 
-![Conexiones GPIO a Ficha Banana](Raspberrypi_pcb_overview_v04.svg)
+![Conexiones GPIO a Ficha Banana](Raspberrypi_pcb_overview_v04.png)
 
 ![foto del modelo terminado](2013-12-26-015233.jpg)
 ![foto del modelo terminado](2013-12-26-015347.jpg)
