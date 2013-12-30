@@ -20,15 +20,18 @@ Copiándome de la experiencia del [Gamepad universal](http://wiki.hackcoop.com.a
 Y los conectores de led de unas PCs viejas que sirvieron para conectar el GPIO a las fichas banana.
 
 ![Conexiones GPIO a Ficha Banana](Raspberrypi_pcb_overview_v04.png)
+> 0, 1, 4, 7, 8, 9, 10, 11, 14, 15, 17, 18, 21, 22, 23, 24, 25 deberia usar solo estos puertos
 
 ![foto del modelo terminado](2013-12-26-015233.jpg)
 ![foto del modelo terminado](2013-12-26-015347.jpg)
 
+Aunque la salida de sonido no es análoga puede generar sonidos usando una modificación de `blink.c` para generar un pseudo-pwm.
 
 ### Pendientes
 
 * Pull-up en los puertos
-* Probarlo bien
+* ~~Probarlo bien~~
+ * algunos puertos no andan, por que son internos del raspberry(24,25)
 * Ejemplos de programación
 
 ## Material de terceros
