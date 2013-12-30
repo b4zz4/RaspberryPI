@@ -1,0 +1,10 @@
+# conecta por red
+sudo ifconfig usb0 192.168.42.10 && sleep 4
+
+# levanta el X11
+Xvfb :0 -screen 0 640x480x16 -shmem &
+sleep 3
+
+# comparte por vnc
+x11vnc -display 0 &
+

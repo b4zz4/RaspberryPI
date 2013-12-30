@@ -1,0 +1,9 @@
+transmission-daemon
+amule-daemon
+git-core
+coreutils
+make
+# https://projects.drogon.net/raspberry-pi/wiringpi/download-and-install/
+# gpio
+x11vnc
+xvfb
