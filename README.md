@@ -10,6 +10,14 @@ Funciona muy bien.
 
 _**Nota:** Arora browser se instalo como parte de una actualización pero no funciona :(_
 
+## Raspbian
+
+Descarge la imagen y la deszipie luego lo bloque a la microSD. Salio andando.
+
+### Pendientes
+
+* Generar un escritorio con [remina](http://remmina.sourceforge.net/) para tener un escritorio de mas de 640x480 seguramente 6 veces mas grande :P
+
 ## GPIO
 
 ![Puertos GPIO](GPIOs.png)
@@ -27,12 +35,32 @@ Y los conectores de led de unas PCs viejas que sirvieron para conectar el GPIO a
 
 Aunque la salida de sonido no es análoga puede generar sonidos usando una modificación de `blink.c` para generar un pseudo-pwm.
 
+## Pantalla
+
+Lo conecte por RCA y anduvo directamente
+
+### Android
+
+Como tenia un android roto de mi hermana lo pensaba usar de pantalla y placa de red, usando este tutorial: http://blog.mohammedlakkadshaw.com/Android_as_display.html
+
+Conecte el android al raspeberry y puse el android en metodo anclaje (tethering), luego instale `x11vnc` y `xvfb` en la raspberry y en el android `androidvnc`.
+Mi idea es tener 2 pantallas una por red y otra fisica por HDMI/RCA
+
+~~~
+sudo ifconfig usb0 192.168.42.10
+Xvfb :0 -screen 0 640x480x16 -shmem
+x11vnc -display : 0
+~~~
+
+
+
 ### Pendientes
 
 * Pull-up en los puertos
 * ~~Probarlo bien~~
  * algunos puertos no andan, por que son internos del raspberry(24,25)
-* Ejemplos de programación
+ * Ejemplos de programación
+* Compilar [Bluetooth de Guerrilla](https://github.com/b4zz4/BluetoothDeGuerrilla) para Raspberry
 
 ## Material de terceros
 
