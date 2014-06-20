@@ -59,12 +59,10 @@ cd wiringPi
 ./build 
 ~~~
 
-### Conector
+### Conectar al ATtiny85
 
 ![Modelo en Fritzing](raspisp.png)
-> Ahora tenemos que conectar nuestro ATtiny85 a la raspberryPI. Las resistencias son todas de Ko Ohm.
-
-### Conectar al ATtiny85
+> Ahora tenemos que conectar nuestro ATtiny85 a la raspberryPI. Las resistencias son todas de 1000 Ohm.
 
 ~~~
 sudo gpio -g mode 22 out
@@ -90,13 +88,14 @@ Este tutorial esta basado en http://www.paperduino.eu/doku.php?id=burning_bootlo
 ### Pendientes
 
 ![Conectar Atty85 a USB](FGHE3SPHH2W3F63.LARGE.jpg)
+> Este dibujo no es difinitivo
 
-* Diodo 1N4148 
-* Diodo zener 3V6 
-* Capacitor Ceramico 100nF 
+* Diodo 1N4148
+* 2 Diodo zener 3.6v 1/2 W
+* Resistencia 1k5 - 1500 ohms 1/4W 
+* 2 Resistencia 68 ohms 1/4
+* Capacitor Ceramico 100nF
 * Capacitor Electrolitico 10uF/16V 
-* Resistencia 1k5 - 1500 Ohms 1/4W 
-* Resistencia 22 Ohm 1/4W
 
 ~~~
 void setup() {               
@@ -115,6 +114,8 @@ void loop() {
   delay(1000);	// espera 1 segundo
 }
 ~~~
+
+Mostrar como programar por USB
 
 ## Material de terceros
 
