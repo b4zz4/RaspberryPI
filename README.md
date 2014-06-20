@@ -53,18 +53,18 @@ Todavia no arme el conector USB del **Attiny85**
 ~~~
 void setup() {               
   // inicia los pins
-  pinMode(0, OUTPUT);
-  pinMode(1, OUTPUT);
+  pinMode(0, OUTPUT);	// LED1
+  pinMode(1, OUTPUT);	// LED2
 }
 void loop() {
-  // prende unos leds
+  // prende el LED1 y apaga el LED2
   digitalWrite(0, HIGH);
-  digitalWrite(1, HIGH);
-  delay(1000);	//espera
-  // prende unos leds
-  digitalWrite(0, LOW);
   digitalWrite(1, LOW);
-  delay(1000);	// espera
+  delay(1000);	//espera 1 segundo
+  // apaga el LED1 y prende el LED2
+  digitalWrite(0, LOW);
+  digitalWrite(1, HIGH);
+  delay(1000);	// espera 1 segundo
 }
 ~~~
 
