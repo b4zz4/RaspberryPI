@@ -27,6 +27,19 @@ Y los conectores de led de unas PCs viejas que sirvieron para conectar el GPIO a
 
 Aunque la salida de sonido no es análoga puede generar sonidos usando una modificación de `blink.c` para generar un pseudo-pwm.
 
+## RaspISP
+
+![Armado RaspISP](PIC_0992.JPG)
+
+http://www.paperduino.eu/doku.php?id=burning_bootloader
+
+### Dibujado en Fritzing
+
+![Modelo en Fritzing](raspisp.png)
+
+No se si funciono, todavia no arme el conector USB del Attiny85
+
+
 ### Pendientes
 
 * Pull-up en los puertos
