@@ -36,9 +36,11 @@ Aunque la salida de sonido no es análoga puede generar sonidos usando una modif
 
 ## RaspISP
 
+Este tutorial esta armado para Raspberry (el debian para raspberry)
+
 ![Armado RaspISP](PIC_0992.JPG)
 
-Lo primero que hay que hacer es configurar el ISP de RaspberryPI con el comando `raspi-config`, pensando en que tenemos raspbian.
+Lo primero que hay que hacer es configurar el ISP de RaspberryPI con el comando `raspi-config`.
 
 ~~~
 cd  ~
@@ -51,11 +53,16 @@ cd avrdude/avrdude
 El control del gpio desde la terminal
 
 ~~~
-cd  ~
+cd ~
 git clone git://git.drogon.net/wiringPi
 cd wiringPi
 ./build 
 ~~~
+
+### Conector
+
+![Modelo en Fritzing](raspisp.png)
+> Ahora tenemos que conectar nuestro ATtiny85 a la raspberryPI
 
 ### Conectar al ATtiny85
 
@@ -79,12 +86,6 @@ sudo gpio -g write 22 1
 El orignal se puede bajar de https://github.com/micronucleus/micronucleus
 
 Este tutorial esta basado en http://www.paperduino.eu/doku.php?id=burning_bootloader
-
-### Dibujado en Fritzing
-
-![Modelo en Fritzing](raspisp.png)
-
-Todavia no arme el conector USB del **Attiny85**
 
 ### Pendientes
 
