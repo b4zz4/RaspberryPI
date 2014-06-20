@@ -50,6 +50,24 @@ Todavia no arme el conector USB del **Attiny85**
 
 ![Conectar Atty85 a USB](FGHE3SPHH2W3F63.LARGE.jpg)
 
+~~~
+void setup() {               
+  // inicia los pins
+  pinMode(0, OUTPUT);
+  pinMode(1, OUTPUT);
+}
+void loop() {
+  // prende unos leds
+  digitalWrite(0, HIGH);
+  digitalWrite(1, HIGH);
+  delay(1000);	//espera
+  // prende unos leds
+  digitalWrite(0, LOW);
+  digitalWrite(1, LOW);
+  delay(1000);	// espera
+}
+~~~
+
 ## Material de terceros
 
 * https://upload.wikimedia.org/wikipedia/commons/a/af/Raspberrypi_pcb_overview_v04.svg
