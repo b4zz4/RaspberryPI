@@ -38,7 +38,47 @@ Aunque la salida de sonido no es análoga puede generar sonidos usando una modif
 
 ![Armado RaspISP](PIC_0992.JPG)
 
-http://www.paperduino.eu/doku.php?id=burning_bootloader
+Lo primero que hay que hacer es configurar el ISP de RaspberryPI con el comando `raspi-config`, pensando en que tenemos raspbian.
+
+~~~
+cd  ~
+sudo apt-get install bison automake autoconf flex git gcc gcc-avr binutils-avr avr-libc
+git clone https://github.com/kcuzner/avrdude 
+cd avrdude/avrdude
+./bootstrap && ./configure && sudo make install
+~~~
+
+El control del gpio desde la terminal
+
+~~~
+cd  ~
+git clone git://git.drogon.net/wiringPi
+cd wiringPi
+./build 
+~~~
+
+### Conectar al ATtiny85
+
+~~~
+sudo gpio -g mode 22 out
+sudo gpio -g write 22 0
+sudo avrdude -p t85 -P /dev/spidev0.0 -c linuxspi -b 10000
+sudo gpio -g write 22 1
+~~~
+
+### Instalar el firmware
+
+~~~
+wget https://github.com/b4zz4/RaspberryPI/raw/master/micronucleus-1.06-upgrade.hex
+sudo gpio -g mode 22 out
+sudo gpio -g write 22 0
+sudo avrdude -P /dev/spidev0.0 -c linuxspi -b 10000 -p t85 -U flash:w:micronucleus-1.06-upgrade.hex -U lfuse:w:0xe1:m -U hfuse:w:0x5d:m -U efuse:w:0xfe:m
+sudo gpio -g write 22 1
+~~~
+
+El orignal se puede bajar de https://github.com/micronucleus/micronucleus
+
+Este tutorial esta basado en http://www.paperduino.eu/doku.php?id=burning_bootloader
 
 ### Dibujado en Fritzing
 
