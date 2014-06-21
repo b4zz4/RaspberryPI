@@ -62,6 +62,88 @@ x11vnc -display : 0
  * Ejemplos de programación
 * Compilar [Bluetooth de Guerrilla](https://github.com/b4zz4/BluetoothDeGuerrilla) para Raspberry
 
+## RaspISP
+
+Este tutorial esta armado para Raspberry (el debian para raspberry)
+
+![Armado RaspISP](PIC_0992.JPG)
+
+Lo primero que hay que hacer es configurar el ISP de RaspberryPI con el comando `raspi-config`.
+
+~~~
+cd  ~
+sudo apt-get install bison automake autoconf flex git gcc gcc-avr binutils-avr avr-libc
+git clone https://github.com/kcuzner/avrdude 
+cd avrdude/avrdude
+./bootstrap && ./configure && sudo make install
+~~~
+
+El control del gpio desde la terminal
+
+~~~
+cd ~
+git clone git://git.drogon.net/wiringPi
+cd wiringPi
+./build 
+~~~
+
+### Conector
+
+![Modelo en Fritzing](raspisp.png)
+> Ahora tenemos que conectar nuestro ATtiny85 a la raspberryPI. Las resistencias son todas de Ko Ohm.
+
+### Conectar al ATtiny85
+
+~~~
+sudo gpio -g mode 22 out
+sudo gpio -g write 22 0
+sudo avrdude -p t85 -P /dev/spidev0.0 -c linuxspi -b 10000
+sudo gpio -g write 22 1
+~~~
+
+### Instalar el firmware
+
+~~~
+wget https://github.com/b4zz4/RaspberryPI/raw/master/micronucleus-1.06-upgrade.hex
+sudo gpio -g mode 22 out
+sudo gpio -g write 22 0
+sudo avrdude -P /dev/spidev0.0 -c linuxspi -b 10000 -p t85 -U flash:w:micronucleus-1.06-upgrade.hex -U lfuse:w:0xe1:m -U hfuse:w:0x5d:m -U efuse:w:0xfe:m
+sudo gpio -g write 22 1
+~~~
+
+El orignal se puede bajar de https://github.com/micronucleus/micronucleus
+
+Este tutorial esta basado en http://www.paperduino.eu/doku.php?id=burning_bootloader
+
+### Pendientes
+
+![Conectar Atty85 a USB](FGHE3SPHH2W3F63.LARGE.jpg)
+
+* Diodo 1N4148 
+* Diodo zener 3V6 
+* Capacitor Ceramico 100nF 
+* Capacitor Electrolitico 10uF/16V 
+* Resistencia 1k5 - 1500 Ohms 1/4W 
+* Resistencia 22 Ohm 1/4W
+
+~~~
+void setup() {               
+  // inicia los pins
+  pinMode(0, OUTPUT);	// LED1
+  pinMode(1, OUTPUT);	// LED2
+}
+void loop() {
+  // prende el LED1 y apaga el LED2
+  digitalWrite(0, HIGH);
+  digitalWrite(1, LOW);
+  delay(1000);	//espera 1 segundo
+  // apaga el LED1 y prende el LED2
+  digitalWrite(0, LOW);
+  digitalWrite(1, HIGH);
+  delay(1000);	// espera 1 segundo
+}
+~~~
+
 ## Material de terceros
 
 * https://upload.wikimedia.org/wikipedia/commons/a/af/Raspberrypi_pcb_overview_v04.svg
