@@ -159,6 +159,25 @@ void loop() {
 }
 ~~~
 
+## X11
+
+Como no tengo espacio para otra pantalla en el escritorio mando el X11 del raspaberry a la pantalla de la computadora de escritorio.
+
+
+~~~
+sudo nano /etc/ssh/sshd_config
+~~~
+y agrego `X11Forwarding yes` para permitir enviar el X11 por la red.
+
+Luego en la otra computadora: 
+
+~~~
+ssh -X pi@raspberry
+~~~
+
+y al correr cualquier aplicacion con X11 este aparecera en la otra pantalla.
+
+
 ## Material de terceros
 
 * https://upload.wikimedia.org/wikipedia/commons/a/af/Raspberrypi_pcb_overview_v04.svg
