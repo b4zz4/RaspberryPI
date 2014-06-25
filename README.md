@@ -12,7 +12,7 @@ _**Nota:** Arora browser se instalo como parte de una actualización pero no fun
 
 ## Raspbian
 
-Descarge la imagen y la deszipie luego lo bloque a la microSD. Salio andando.
+Descargue la imagen y la deszipie luego lo bloque a la microSD. Salio andando.
 
 ### Pendientes
 
@@ -22,7 +22,7 @@ Descarge la imagen y la deszipie luego lo bloque a la microSD. Salio andando.
 
 ![Puertos GPIO](img/GPIOs.png)
 
-compile la herramientas para manejar en [bash los puertos GPIO](http://elinux.org/Rpi_Low-level_peripherals#Bash_shell_script.2C_using_sysafs.2C_part_of_the_raspbian_operating_system).
+Compile la herramientas para manejar en [bash los puertos GPIO](http://elinux.org/Rpi_Low-level_peripherals#Bash_shell_script.2C_using_sysafs.2C_part_of_the_raspbian_operating_system).
 Como la experiencia fue muy simple solo tuve que usar ... pensé en ponerle una interfaz más amigable a algunos puestos del GPIO. 
 Copiándome de la experiencia del [Gamepad universal](http://wiki.hackcoop.com.ar/Gamepad_universal) de [li-kun](https://github.com/li-kun) use fichas banana y un envase de plástico duro hecho cortado a mano.
 Y los conectores de led de unas PCs viejas que sirvieron para conectar el GPIO a las fichas banana.
@@ -33,7 +33,17 @@ Y los conectores de led de unas PCs viejas que sirvieron para conectar el GPIO a
 ![foto del modelo terminado](img/2013-12-26-015233.jpg)
 ![foto del modelo terminado](img/2013-12-26-015347.jpg)
 
+### El control del GPIO desde la terminal
+
+~~~
+cd ~
+git clone git://git.drogon.net/wiringPi
+cd wiringPi
+./build 
+~~~
+
 Aunque la salida de sonido no es análoga puede generar sonidos usando una modificación de `blink.c` para generar un pseudo-pwm.
+
 
 ## Pantalla
 
@@ -51,8 +61,6 @@ sudo ifconfig usb0 192.168.42.10
 Xvfb :0 -screen 0 640x480x16 -shmem
 x11vnc -display : 0
 ~~~
-
-
 
 ### Pendientes
 
@@ -79,21 +87,14 @@ cd avrdude/avrdude
 ./bootstrap && ./configure && sudo make install
 ~~~
 
-El control del GPIO desde la terminal
-
-~~~
-cd ~
-git clone git://git.drogon.net/wiringPi
-cd wiringPi
-./build 
-~~~
-
 ### Conector
 
 ![Modelo en Fritzing](img/raspisp.png)
 > Ahora tenemos que conectar nuestro ATtiny85 a la raspberryPI. Las resistencias son todas de Ko Ohm.
 
 ### Conectar al ATtiny85
+
+Vamos a necesitar el control de GPIO que se explico anteriormente
 
 ~~~
 sudo gpio -g mode 22 out
@@ -119,12 +120,11 @@ sudo gpio -g write 22 1
 
 Grabamos el firmware, en el microcontrolador.
 
-
 * El Firmware orignal se puede bajar de https://github.com/micronucleus/micronucleus
 * Este tutorial esta basado en http://www.paperduino.eu/doku.php?id=burning_bootloader
 
-### Pendientes
-
+### Circuito para conectar por USB
+ 
 ![Conectar Atty85 a USB](img/FGHE3SPHH2W3F63.LARGE.jpg)
 
 * Diodo 1N4148 
@@ -133,6 +133,13 @@ Grabamos el firmware, en el microcontrolador.
 * 2 Resistencia 68 Ohm 1/4W
 * Capacitor Ceramico 100nF 
 * Capacitor Electrolitico 10uF/16V 
+
+En mi experiencia de armar este circuito no logro comunicarse con la computadora.
+Para que la computadora lo detecte necesitamos instalar las reglas de [Digispak](...) en [Arduino](...).
+
+### Pendientes
+
+Hacer que ande el arduino con este circuito.
 
 ~~~
 void setup() {               
