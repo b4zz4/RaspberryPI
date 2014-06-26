@@ -14,10 +14,6 @@ _**Nota:** Arora browser se instalo como parte de una actualización pero no fun
 
 Descargue la imagen y la deszipie luego lo bloque a la microSD. Salio andando.
 
-### Pendientes
-
-* Generar un escritorio con [remina](http://remmina.sourceforge.net/) para tener un escritorio de mas de 640x480 seguramente 6 veces mas grande :P
-
 ## GPIO
 
 ![Puertos GPIO](img/GPIOs.png)
@@ -44,10 +40,37 @@ cd wiringPi
 
 Aunque la salida de sonido no es análoga puede generar sonidos usando una modificación de `blink.c` para generar un pseudo-pwm.
 
-
 ## Pantalla
 
 Lo conecte por RCA y anduvo directamente
+
+### X11
+
+Como no tengo espacio para otra pantalla en el escritorio mando el X11 del raspaberry a la pantalla de la computadora de escritorio.
+
+
+~~~
+sudo nano /etc/ssh/sshd_config
+~~~
+y agrego `X11Forwarding yes` para permitir enviar el X11 por la red.
+
+Luego en la otra computadora: 
+
+~~~
+ssh -X pi@raspberry
+~~~
+
+y al correr cualquier aplicacion con X11 este aparecera en la otra pantalla, tambien se puede agregar en la configuracion de ssh para que esto ocurra por defecto al conectar por ssh en `.ssh/config`, ejemplo:
+
+~~~
+Host pi
+User pi
+Hostname raspberry
+Port 22
+ForwardX11 yes
+~~~
+
+Así uno solo necesita hacer `ssh pi` para conectar tanto por ssh como por X11.
 
 ### Android
 
@@ -61,14 +84,6 @@ sudo ifconfig usb0 192.168.42.10
 Xvfb :0 -screen 0 640x480x16 -shmem
 x11vnc -display : 0
 ~~~
-
-### Pendientes
-
-* Pull-up en los puertos
-* ~~Probarlo bien~~
- * algunos puertos no andan, por que son internos del raspberry(24,25)
- * Ejemplos de programación
-* Compilar [Bluetooth de Guerrilla](https://github.com/b4zz4/BluetoothDeGuerrilla) para Raspberry
 
 ## RaspISP
 
@@ -87,12 +102,18 @@ cd avrdude/avrdude
 ./bootstrap && ./configure && sudo make install
 ~~~
 
-### Conector
-
-![Modelo en Fritzing](img/raspisp.png)
-> Ahora tenemos que conectar nuestro ATtiny85 a la raspberryPI. Las resistencias son todas de Ko Ohm.
+El control del gpio desde la terminal
+~~~
+cd ~
+git clone git://git.drogon.net/wiringPi
+cd wiringPi
+./build 
+~~~
 
 ### Conectar al ATtiny85
+
+![Modelo en Fritzing](img/raspisp.png)
+> Ahora tenemos que conectar nuestro ATtiny85 a la raspberryPI. Las resistencias son todas de 1000 Ohm.
 
 Vamos a necesitar el control de GPIO que se explico anteriormente
 
@@ -126,6 +147,7 @@ Grabamos el firmware, en el microcontrolador.
 ### Circuito para conectar por USB
  
 ![Conectar Atty85 a USB](img/FGHE3SPHH2W3F63.LARGE.jpg)
+> Este dibujo no es difinitivo
 
 * Diodo 1N4148 
 * 2 Diodos zener 3V6
@@ -155,6 +177,7 @@ void loop() {
 }
 ~~~
 
+<<<<<<< HEAD
 Este es uno de los ejemplos que vienen en la versión de arduino de Digispak.
 
 ### Conectar Digispak por USB
@@ -168,21 +191,42 @@ probe instalando `modemmanager`
 
 Como no tengo espacio para otra pantalla en el escritorio mando el X11 del raspaberry a la pantalla de la computadora de escritorio.
 
+# RaspberryPI RepRap
+
+## Printrun
+
+~~~ 
+sudo apt-get install -y python-pip git mercurial python-distribute wx-common  python-pmw python-imaging python python-tk idle python-psutil python-wxtools
+sudo easy_install pip
+sudo pip install pyserial
+cd
+git clone https://github.com/kliment/Printrun.git
+wget http://fabmetheus.crsndoo.com/files/50_reprap_python_beanshell.zip
+unzip 50_reprap_python_beanshell.zip
+cd Printrun
+python setup.py build
+sudo python setup.py install
+~~~
+
+## Slic3r
 
 ~~~
-sudo nano /etc/ssh/sshd_config
+sudo apt-get install -y git-core build-essential libgtk2.0-dev libwxgtk2.8-dev libwx-perl libmodule-build-perl libnet-dbus-perl cpanminus libextutils-cbuilder-perl gcc-4.7 g++-4.7 libwx-perl libperl-dev
+sudo cpanm AAR/Boost-Geometry-Utils-0.06.tar.gz Math::Clipper Math::ConvexHull Math::ConvexHull::MonotoneChain Math::Geometry::Voronoi Math::PlanePath Moo IO::Scalar Class::XSAccessor Growl::GNTP XML::SAX::ExpatXS PAR::Packer
+cd
+git clone https://github.com/alexrj/Slic3r.git
+cd Slic3r
+git checkout 0.9.9
+yes | sudo perl Build.PL
+sudo ./Build install
 ~~~
-y agrego `X11Forwarding yes` para permitir enviar el X11 por la red.
 
-Luego en la otra computadora: 
+### Pendientes
 
-~~~
-ssh -X pi@raspberry
-~~~
+* Pull-up en los puertos
+* ~~Probarlo bien~~
+ * algunos puertos no andan, por que son internos del raspberry(24,25)
+ * Ejemplos de programación
+* Compilar [Bluetooth de Guerrilla](https://github.com/b4zz4/BluetoothDeGuerrilla) para Raspberry
+* Generar un escritorio con [remina](http://remmina.sourceforge.net/) para tener un escritorio de mas de 640x480 seguramente 6 veces mas grande :P
 
-y al correr cualquier aplicacion con X11 este aparecera en la otra pantalla.
-
-
-## Material de terceros
-
-* https://upload.wikimedia.org/wikipedia/commons/a/af/Raspberrypi_pcb_overview_v04.svg
