@@ -14,10 +14,6 @@ _**Nota:** Arora browser se instalo como parte de una actualización pero no fun
 
 Descargue la imagen y la deszipie luego lo bloque a la microSD. Salio andando.
 
-### Pendientes
-
-* Generar un escritorio con [remina](http://remmina.sourceforge.net/) para tener un escritorio de mas de 640x480 seguramente 6 veces mas grande :P
-
 ## GPIO
 
 ![Puertos GPIO](img/GPIOs.png)
@@ -211,10 +207,6 @@ yes | sudo perl Build.PL
 sudo ./Build install
 ~~~
 
-## Material de terceros
-
-* https://upload.wikimedia.org/wikipedia/commons/a/af/Raspberrypi_pcb_overview_v04.svg
-
 ### Pendientes
 
 * Pull-up en los puertos
@@ -222,3 +214,5 @@ sudo ./Build install
  * algunos puertos no andan, por que son internos del raspberry(24,25)
  * Ejemplos de programación
 * Compilar [Bluetooth de Guerrilla](https://github.com/b4zz4/BluetoothDeGuerrilla) para Raspberry
+* Generar un escritorio con [remina](http://remmina.sourceforge.net/) para tener un escritorio de mas de 640x480 seguramente 6 veces mas grande :P
+
