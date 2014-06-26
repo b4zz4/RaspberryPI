@@ -135,11 +135,7 @@ Grabamos el firmware, en el microcontrolador.
 * Capacitor Electrolitico 10uF/16V 
 
 En mi experiencia de armar este circuito no logro comunicarse con la computadora.
-Para que la computadora lo detecte necesitamos instalar las reglas de [Digispak](...) en [Arduino](...).
-
-### Pendientes
-
-Hacer que ande el arduino con este circuito.
+Para que la computadora lo detecte necesitamos instalar las reglas de [Digispak](http://sourceforge.net/projects/digistump/files/) en [Arduino](http://arduino.cc/).
 
 ~~~
 void setup() {               
@@ -158,6 +154,15 @@ void loop() {
   delay(1000);	// espera 1 segundo
 }
 ~~~
+
+Este es uno de los ejemplos que vienen en la versión de arduino de Digispak.
+
+### Conectar Digispak por USB
+
+No andubo al primer intento, no genero el dispositivo USB
+
+probe instalando `modemmanager`
+
 
 ## X11
 
