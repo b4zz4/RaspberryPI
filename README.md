@@ -27,6 +27,10 @@ Y los conectores de led de unas PCs viejas que sirvieron para conectar el GPIO a
 
 Aunque la salida de sonido no es análoga puede generar sonidos usando una modificación de `blink.c` para generar un pseudo-pwm.
 
+## Material de terceros
+
+* https://upload.wikimedia.org/wikipedia/commons/a/af/Raspberrypi_pcb_overview_v04.svg
+
 ### Pendientes
 
 * Pull-up en los puertos
@@ -117,6 +121,34 @@ void loop() {
 
 Mostrar como programar por USB
 
-## Material de terceros
+# RaspberryPI RepRap
 
-* https://upload.wikimedia.org/wikipedia/commons/a/af/Raspberrypi_pcb_overview_v04.svg
+
+
+## Printrun
+
+~~~ 
+sudo apt-get install -y python-pip git mercurial python-distribute wx-common  python-pmw python-imaging python python-tk idle python-psutil python-wxtools
+sudo easy_install pip
+sudo pip install pyserial
+cd
+git clone https://github.com/kliment/Printrun.git
+wget http://fabmetheus.crsndoo.com/files/50_reprap_python_beanshell.zip
+unzip 50_reprap_python_beanshell.zip
+cd Printrun
+python setup.py build
+sudo python setup.py install
+~~~
+
+## Slic3r
+
+~~~
+sudo apt-get install -y git-core build-essential libgtk2.0-dev libwxgtk2.8-dev libwx-perl libmodule-build-perl libnet-dbus-perl cpanminus libextutils-cbuilder-perl gcc-4.7 g++-4.7 libwx-perl libperl-dev
+sudo cpanm AAR/Boost-Geometry-Utils-0.06.tar.gz Math::Clipper Math::ConvexHull Math::ConvexHull::MonotoneChain Math::Geometry::Voronoi Math::PlanePath Moo IO::Scalar Class::XSAccessor Growl::GNTP XML::SAX::ExpatXS PAR::Packer
+cd
+git clone https://github.com/alexrj/Slic3r.git
+cd Slic3r
+git checkout 0.9.9
+yes | sudo perl Build.PL
+sudo ./Build install
+~~~
