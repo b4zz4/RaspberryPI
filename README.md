@@ -116,15 +116,8 @@ cd wiringPi
 
 ### Conectar al ATtiny85
 
-![Modelo en Fritzing](raspisp.png)
-> Ahora tenemos que conectar nuestro ATtiny85 a la raspberryPI. Las resistencias son todas de 1000 Ohm.
-=======
-### Conector
-
 ![Modelo en Fritzing](img/raspisp.png)
-> Ahora tenemos que conectar nuestro ATtiny85 a la raspberryPI. Las resistencias son todas de Ko Ohm.
-
-### Conectar al ATtiny85
+> Ahora tenemos que conectar nuestro ATtiny85 a la raspberryPI. Las resistencias son todas de 1000 Ohm.
 
 Vamos a necesitar el control de GPIO que se explico anteriormente
 
