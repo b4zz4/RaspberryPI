@@ -177,8 +177,7 @@ void loop() {
 }
 ~~~
 
-<<<<<<< HEAD
-Este es uno de los ejemplos que vienen en la versión de arduino de Digispak.
+Este es uno de los ejemplos que vienen en la versión de arduino de Digispak
 
 ### Conectar Digispak por USB
 
@@ -221,7 +220,94 @@ yes | sudo perl Build.PL
 sudo ./Build install
 ~~~
 
-### Pendientes
+## Compartir archivos
+
+~~~
+sudo apt-get -y install samba samba-common-bin
+sudo mv /etc/samba/smb.conf /etc/samba/smb.conf.old
+~~~
+
+~~~
+[global]
+server string = Servidor
+
+[Compartir]
+comment = Archivos compartidos
+path = /home/pi
+writeable = Yes
+only guest = Yes
+create mask = 0777
+directory mask = 0777
+browseable = Yes
+public = yes
+~~~
+
+Compiar esto al archivo `/etc/samba/smb.conf`
+
+~~~
+sudo smbpasswd -a pi
+~~~
+
+Agrega una clave para samba
+
+~~~
+sudo service samba restart
+~~~
+
+Reinicar el servicio
+
+## Servidor de impresora
+
+~~~
+sudo apt-get install cups
+sudo usermod -a -G lpadmin pi
+~~~
+
+Modificar la configuración de permisos para usar cups en toda la red:
+
+~~~
+sudo nano /etc/cups/cupsd.conf
+~~~
+
+~~~
+Listen *:631
+
+...
+
+</Location>
+  Order allow,deny
+  Allow 192.168.*.*
+</Location>
+
+# Restrict access to the admin pages...
+<Location /admin>
+  Order allow,deny
+  Allow 192.168.*.*
+</Location>
+
+# Restrict access to configuration files...
+<Location /admin/conf>
+  AuthType Default
+  Require user @SYSTEM
+  Allow 192.168.*.*
+  Order allow,deny
+</Location>
+
+~~~
+
+~~~
+sudo service cups restart
+~~~
+
+ahora podemos entrar a la url de cups en el http://raspberry.local:631
+
+Basado en [este articulo](http://geekytheory.com/tutorial-raspberry-pi-12-como-crear-un-servidor-de-impresion/)
+
+### Impresora por puerto paralelo via USB
+
+
+
+## Pendientes
 
 * Pull-up en los puertos
 * ~~Probarlo bien~~
