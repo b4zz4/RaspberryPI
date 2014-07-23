@@ -214,6 +214,32 @@ No andubo al primer intento, no genero el dispositivo USB
 probe instalando `modemmanager`
 
 
+### Processing
+
+
+Actualizamos el sistema e instalamos java 1.7
+
+~~~ 
+sudo apt-get update
+sudo apt-get dist-upgrade
+sudo apt-get install oracle-java7-jdk
+sudo update-alternatives --config java
+~~~ 
+
+Elegimos la version 1.7 de java. 
+
+~~~ 
+wget http://download.processing.org/processing-2.2.1-linux32.tgz
+tar xvzf processing-2.1-linux32.tgz
+cd  ~/processing-*/
+rm -rf java 
+ln -s /usr/lib/jvm/jdk-7-oracle-armhf java
+rm modes/java/libraries/serial/library/RXTXcomm.jar
+cp /usr/share/java/RXTXcomm.jar modes/java/libraries/serial/library/
+~~~ 
+
+Ya podemos usar processing
+
 ## X11
 
 Como no tengo espacio para otra pantalla en el escritorio mando el X11 del raspaberry a la pantalla de la computadora de escritorio.
