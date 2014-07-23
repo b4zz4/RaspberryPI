@@ -85,6 +85,34 @@ Xvfb :0 -screen 0 640x480x16 -shmem
 x11vnc -display : 0
 ~~~
 
+## VNC
+
+~~~
+sudo aptitude install tightvncserver
+~~~
+
+Ahora vamos a hacer que el servidor inicie cada vez que inicie
+
+~~~
+mkdir -p ~/.config/autostart/
+~~~
+
+y grabar lo siguiente en el archivo ~/.config/autostart/vnc.desktop
+
+~~~
+[Desktop Entry]
+Type=Application
+Name=TightVNC
+Exec=vncserver :1 -geometry 1024x768 -depth 16
+StartupNotify=false
+~~~
+
+~~~
+sudo raspi-config
+~~~
+
+Y elegimos **3 Enable Boot to Desktop/Scratch** y luego **Desktop Log in as user 'pi' at the graphical desktop**, al reiniciar iniciara directamete el X11
+
 ## RaspISP
 
 Este tutorial esta armado para Raspberry (el debian para raspberry)
