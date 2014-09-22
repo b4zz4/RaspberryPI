@@ -354,12 +354,6 @@ Basado en [este articulo](http://geekytheory.com/tutorial-raspberry-pi-12-como-c
 
 ### Impresora por puerto paralelo via USB
 
-<<<<<<< HEAD
-## OctoPrint
-=======
-....
-
-
 ## Pd-extend
 
 ~~~
@@ -367,7 +361,10 @@ wget https://puredata.info/downloads/pd-extended-0-43-3-on-raspberry-pi-raspbian
 sudo dpkg -i Pd-0.43.3-extended-20121004.deb
 sudo apt-get -f install 
 ~~~
->>>>>>> e5ab33da85a959514f4ccbc98a2812d2505cafc4
+
+## OctoPrint
+=======
+
 
 ~~~
 sudo pip install octoprint
