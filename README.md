@@ -305,7 +305,33 @@ Basado en [este articulo](http://geekytheory.com/tutorial-raspberry-pi-12-como-c
 
 ### Impresora por puerto paralelo via USB
 
+## OctoPrint
 
+~~~
+sudo pip install octoprint
+~~~
+
+https://github.com/kaosat-dev/CoffeeSCad
+
+**Notas:** Falta poner los plugins
+
+## Minihttp
+
+Tenemos que modificar el archivo `/etc/mini-httpd.conf` con los siguiente datos:
+
+~~~
+host=0.0.0.0
+port=80
+user=nobody
+chroot # yes
+data_dir=/home/pi/www/
+cgipat=cgi-bin/*
+logfile=/dev/null
+pidfile=/tmp/mini-httpd.pid
+charset=utf-8
+~~~
+
+y reiniciar el servicio con `sudo service mini-httpd restart`
 
 ## Pendientes
 
