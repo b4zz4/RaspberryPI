@@ -85,6 +85,34 @@ Xvfb :0 -screen 0 640x480x16 -shmem
 x11vnc -display : 0
 ~~~
 
+## VNC
+
+~~~
+sudo aptitude install tightvncserver
+~~~
+
+Ahora vamos a hacer que el servidor inicie cada vez que inicie
+
+~~~
+mkdir -p ~/.config/autostart/
+~~~
+
+y grabar lo siguiente en el archivo ~/.config/autostart/vnc.desktop
+
+~~~
+[Desktop Entry]
+Type=Application
+Name=TightVNC
+Exec=vncserver :1 -geometry 1024x768 -depth 16
+StartupNotify=false
+~~~
+
+~~~
+sudo raspi-config
+~~~
+
+Y elegimos **3 Enable Boot to Desktop/Scratch** y luego **Desktop Log in as user 'pi' at the graphical desktop**, al reiniciar iniciara directamete el X11
+
 ## RaspISP
 
 Este tutorial esta armado para Raspberry (el debian para raspberry)
@@ -185,6 +213,27 @@ No andubo al primer intento, no genero el dispositivo USB
 
 probe instalando `modemmanager`
 
+
+### Processing
+
+
+Actualizamos el sistema e instalamos java 1.7
+
+~~~
+sudo apt-get update
+sudo apt-get dist-upgrade
+sudo apt-get install oracle-java7-jdk
+sudo update-alternatives --config java # Elegimos la version 1.7 de java. 
+wget http://download.processing.org/processing-2.2.1-linux32.tgz
+tar xvzf processing-2.1-linux32.tgz
+cd  ~/processing-*/
+rm -rf java 
+ln -s /usr/lib/jvm/jdk-7-oracle-armhf java
+rm modes/java/libraries/serial/library/RXTXcomm.jar
+cp /usr/share/java/RXTXcomm.jar modes/java/libraries/serial/library/
+~~~
+
+Ya podemos usar processing 
 
 ## X11
 
@@ -305,7 +354,20 @@ Basado en [este articulo](http://geekytheory.com/tutorial-raspberry-pi-12-como-c
 
 ### Impresora por puerto paralelo via USB
 
+<<<<<<< HEAD
 ## OctoPrint
+=======
+....
+
+
+## Pd-extend
+
+~~~
+wget https://puredata.info/downloads/pd-extended-0-43-3-on-raspberry-pi-raspbian-wheezy-armhf/releases/1.0/Pd-0.43.3-extended-20121004.deb
+sudo dpkg -i Pd-0.43.3-extended-20121004.deb
+sudo apt-get -f install 
+~~~
+>>>>>>> e5ab33da85a959514f4ccbc98a2812d2505cafc4
 
 ~~~
 sudo pip install octoprint
