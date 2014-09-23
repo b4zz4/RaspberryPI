@@ -278,17 +278,23 @@ sudo mv /etc/samba/smb.conf /etc/samba/smb.conf.old
 
 ~~~
 [global]
-server string = Servidor
+server string = Todomatic
+security = share
+lock directory = /var/cache/samba
 
-[Compartir]
-comment = Archivos compartidos
-path = /home/pi
-writeable = Yes
-only guest = Yes
-create mask = 0777
+
+[Archivitos]
+comment = Compartidos
+path = /home/pi/
+writeable = yes
+browsable = yes
+read only = no
+guest ok = yes
+only guest = yes
+force user = pi
+create mask = 0666
 directory mask = 0777
-browseable = Yes
-public = yes
+
 ~~~
 
 Compiar esto al archivo `/etc/samba/smb.conf`
